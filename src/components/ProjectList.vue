@@ -52,124 +52,130 @@ export default {
     return h(
       'div',
       {
-        class: 'row q-col-gutter-lg',
+        class: 'wrap',
 
         style: {
-          maxWidth: '1140px',
-          marginLeft: 'auto',
-          marginRight: 'auto'
+          paddingTop: '24px'
         }
       },
       [
-        ...LIST.map((item) => {
-          const {
-            size,
-            title,
-            tags,
-            img,
-            styling = 'light'
-          } = item
+        h(
+          'div',
+          {
+            class: 'row q-col-gutter-lg'
+          },
+          [
+            ...LIST.map((item) => {
+              const {
+                size,
+                title,
+                tags,
+                img,
+                styling = 'light'
+              } = item
 
-          return h(
-            'QCard',
-            {
-              class: `col-${size}`,
-
-              props: {
-                square: true,
-                flat: true
-              }
-            },
-            [
-              h(
-                'QImg',
+              return h(
+                'QCard',
                 {
+                  class: `col-${size}`,
+
                   props: {
-                    src: img
+                    square: true,
+                    flat: true
                   }
                 },
                 [
                   h(
-                    'div',
+                    'QImg',
                     {
-                      class: 'bg-transparent',
-
-                      style: {
-                        fontSize: '20px',
-                        letterSpacing: '.1em',
-                        color: (styling === 'dark') ? '#42515b' : 'white'
-                      },
-
-                      domProps: {
-                        innerHTML: title.toUpperCase()
-                      }
-                    }
-                  ),
-
-                  h(
-                    'div',
-                    {
-                      class: 'bg-transparent absolute',
-
-                      style: {
-                        bottom: '6px',
-                        letterSpacing: '.1em'
+                      props: {
+                        src: img
                       }
                     },
                     [
-                      ...tags.map(item => (
-                        h(
-                          'QChip',
-                          {
-                            style: {
-                              backgroundColor: (styling === 'dark') ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.2)',
-                              color: (styling === 'dark') ? '#42515b' : 'white'
-                            }
+                      h(
+                        'div',
+                        {
+                          class: 'bg-transparent',
+
+                          style: {
+                            fontSize: '20px',
+                            letterSpacing: '.1em',
+                            color: (styling === 'dark') ? '#42515b' : 'white'
                           },
-                          item.toUpperCase()
-                        )
-                      ))
+
+                          domProps: {
+                            innerHTML: title.toUpperCase()
+                          }
+                        }
+                      ),
+
+                      h(
+                        'div',
+                        {
+                          class: 'bg-transparent absolute',
+
+                          style: {
+                            bottom: '6px',
+                            letterSpacing: '.1em'
+                          }
+                        },
+                        [
+                          ...tags.map(item => (
+                            h(
+                              'QChip',
+                              {
+                                style: {
+                                  backgroundColor: (styling === 'dark') ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.2)',
+                                  color: (styling === 'dark') ? '#42515b' : 'white'
+                                }
+                              },
+                              item.toUpperCase()
+                            )
+                          ))
+                        ]
+                      )
                     ]
                   )
                 ]
               )
-            ]
-          )
-        }),
+            }),
 
-        h(
-          'div',
-          {
-            class: 'col-12 text-center'
-          },
-          [
             h(
-              'QBtn',
+              'div',
               {
-                class: 'q-px-xl',
-
-                style: {
-                  fontSize: '16px',
-                  minHeight: '60px'
-                },
-
-                props: {
-                  color: 'primary',
-                  unelevated: true,
-                  label: this.$t('showMore'),
-                  rounded: true
-                }
+                class: 'col-12 text-center'
               },
               [
                 h(
-                  'QIcon',
+                  'QBtn',
                   {
-                    class: 'q-ml-md',
+                    class: 'q-px-xl',
+
+                    style: {
+                      fontSize: '16px',
+                      minHeight: '60px'
+                    },
 
                     props: {
-                      name: 'add'
+                      color: 'primary',
+                      unelevated: true,
+                      label: this.$t('showMore'),
+                      rounded: true
                     }
-                  }
+                  },
+                  [
+                    h(
+                      'QIcon',
+                      {
+                        class: 'q-ml-md',
+
+                        props: {
+                          name: 'add'
+                        }
+                      }
+                    )
+                  ]
                 )
               ]
             )
