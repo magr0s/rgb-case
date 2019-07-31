@@ -121,7 +121,7 @@ export default {
                     },
 
                     props: {
-                      src: 'assets/logo.png'
+                      src: 'statics/logo.png'
                     }
                   }
                 )

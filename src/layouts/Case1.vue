@@ -10,7 +10,14 @@ export default {
     return h(
       'QLayout',
       [
-        h('Case1Header')
+        h('Case1Header'),
+
+        h(
+          'QPageContainer',
+          [
+            h('RouterView')
+          ]
+        )
       ]
     )
   }
