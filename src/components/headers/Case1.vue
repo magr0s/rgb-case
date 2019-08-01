@@ -1,4 +1,6 @@
 <script>
+import { ConsultationDialog } from 'components/dialogs'
+
 const NAVIGATOR = [
   { name: 'service', to: '/case1/service' },
   { name: 'project', to: '/case1/project' },
@@ -10,6 +12,10 @@ const NAVIGATOR = [
 const PHONE = '+7 342 225-00-75'
 
 export default {
+  components: {
+    ConsultationDialog
+  },
+
   data () {
     return {
       dialog: false
@@ -28,7 +34,7 @@ export default {
       },
       [
         h(
-          'QDialog',
+          'ConsultationDialog',
           {
             props: {
               value: this.dialog
@@ -37,60 +43,7 @@ export default {
             on: {
               input: value => (this.dialog = value)
             }
-          },
-          [
-            h(
-              'QCard',
-              {
-                style: {
-                  width: '1280px',
-                  maxWidth: '90vw',
-                  height: '786px',
-                  maxHeight: '90vh',
-                  overflow: 'visible'
-                },
-
-                props: {
-                  square: true
-                }
-              },
-              [
-                h(
-                  'QBtn',
-                  {
-                    class: 'absolute z-top',
-
-                    style: {
-                      top: '-30px',
-                      right: '-30px'
-                    },
-
-                    props: {
-                      color: 'primary',
-                      icon: 'close',
-                      unelevated: true,
-                      round: true,
-                      size: 'lg'
-                    },
-
-                    directives: [
-                      {
-                        name: 'close-popup',
-                        value: true
-                      }
-                    ]
-                  }
-                ),
-
-                h(
-                  'QCardSection',
-                  {
-                    class: 'fit'
-                  }
-                )
-              ]
-            )
-          ]
+          }
         ),
 
         h(
@@ -179,7 +132,7 @@ export default {
               'QBtn',
               {
                 props: {
-                  label: this.$t('case1.consultation'),
+                  label: this.$t('btn.consultation'),
                   color: 'primary',
                   outline: true,
                   rounded: true
