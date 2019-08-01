@@ -55,7 +55,7 @@ export default {
         class: 'wrap',
 
         style: {
-          paddingTop: '24px'
+          paddingTop: '100px'
         }
       },
       [
@@ -100,8 +100,8 @@ export default {
 
                           style: {
                             fontSize: '20px',
-                            letterSpacing: '.1em',
-                            color: (styling === 'dark') ? '#42515b' : 'white'
+                            color: (styling === 'dark') ? '#42515b' : 'white',
+                            padding: '35px 30px'
                           },
 
                           domProps: {
@@ -117,7 +117,7 @@ export default {
 
                           style: {
                             bottom: '6px',
-                            letterSpacing: '.1em'
+                            padding: '12px 26px'
                           }
                         },
                         [
@@ -127,7 +127,10 @@ export default {
                               {
                                 style: {
                                   backgroundColor: (styling === 'dark') ? 'rgba(255,255,255,.5)' : 'rgba(0,0,0,.2)',
-                                  color: (styling === 'dark') ? '#42515b' : 'white'
+                                  color: (styling === 'dark') ? '#42515b' : 'white',
+                                  fontSize: '12px',
+                                  paddingLeft: '20px',
+                                  paddingRight: '20px'
                                 }
                               },
                               item.toUpperCase()
