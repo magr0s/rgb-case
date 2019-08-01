@@ -26,7 +26,7 @@ export default {
     return h(
       'QHeader',
       {
-        class: 'q-py-lg q-px-xl',
+        class: 'q-py-lg',
 
         style: {
           backgroundColor: '#f2f5f7'
@@ -49,7 +49,7 @@ export default {
         h(
           'QToolbar',
           {
-            class: 'bg-transparent text-black q-py-xs',
+            class: 'bg-transparent text-black q-px-xl',
 
             style: {
               maxWidth: '1400px',
@@ -86,7 +86,16 @@ export default {
             h(
               'QTabs',
               {
-                class: 'q-mr-md'
+                class: 'q-mr-md',
+
+                style: {
+                  marginTop: '6px',
+                  marginRight: '16px'
+                },
+
+                props: {
+                  indicatorColor: 'transparent'
+                }
               },
               [
                 ...NAVIGATOR.map((item) => {
@@ -98,11 +107,11 @@ export default {
                   return h(
                     'QRouteTab',
                     {
-                      class: 'tab--customize',
+                      class: 'tab--customize link--hovered',
 
                       style: {
-                        paddingLeft: '12px',
-                        paddingRight: '12px'
+                        paddingLeft: '14px',
+                        paddingRight: '14px'
                       },
 
                       props: {
@@ -118,12 +127,18 @@ export default {
             h(
               'QBtn',
               {
-                class: 'q-mr-sm',
+                class: 'q-mr-sm link--hovered',
+
+                style: {
+                  marginTop: '6px',
+                  marginRight: '12px'
+                },
 
                 props: {
                   label: PHONE,
                   flat: true,
-                  color: 'primary'
+                  color: 'primary',
+                  to: `tel:${PHONE}`
                 }
               }
             ),
@@ -131,6 +146,14 @@ export default {
             h(
               'QBtn',
               {
+                style: {
+                  borderWidth: '2px',
+                  marginTop: '6px',
+                  minHeight: '51px',
+                  paddingLeft: '28px',
+                  paddingRight: '28px'
+                },
+
                 props: {
                   label: this.$t('btn.consultation'),
                   color: 'primary',
@@ -140,6 +163,16 @@ export default {
 
                 on: {
                   click: () => (this.dialog = true)
+                },
+
+                nativeOn: {
+                  mouseenter: (evt) => {
+                    evt.target.classList.add('hover-style')
+                  },
+
+                  mouseleave: (evt) => {
+                    evt.target.classList.remove('hover-style')
+                  }
                 }
               }
             )
@@ -152,6 +185,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.hover-style
+  box-shadow 5px 9px 15px 0px rgba(0, 99, 217, 0.3)
+  background-color #17a4fd !important
+  color white !important
+  border-color #17a4fd !important
+
 .tab--customize >>>
   .q-tab__content
     min-width auto
