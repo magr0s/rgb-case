@@ -12,7 +12,18 @@ export default {
     return h(
       'QPage',
       [
+        h(
+          'div',
+          {
+            style: {
+              backgroundColor: '#f2f5f7',
+              paddingTop: '28px'
+            }
+          }
+        ),
+
         h('MainCarousel'),
+
         h('ProjectList')
       ]
     )

@@ -83,8 +83,9 @@ export default {
               class: 'flex column',
 
               style: {
-                backgroundPosition: '500px center', // need testing
-                backgroundRepeat: 'no-repeat'
+                backgroundPosition: '488px center', // need testing
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'contain'
               },
 
               props: {
