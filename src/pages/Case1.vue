@@ -18,13 +18,34 @@ export default {
             style: {
               backgroundColor: '#f2f5f7',
               paddingTop: '28px'
-            }
+            },
+
+            directives: [
+              {
+                name: 'dynamic-padding'
+              }
+            ]
           }
         ),
 
         h('MainCarousel'),
 
-        h('ProjectList')
+        h('ProjectList'),
+
+        h(
+          'div',
+          {
+            style: {
+              paddingTop: '175px'
+            },
+
+            directives: [
+              {
+                name: 'dynamic-padding'
+              }
+            ]
+          }
+        )
       ]
     )
   }

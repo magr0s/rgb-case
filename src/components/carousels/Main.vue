@@ -10,8 +10,8 @@ const SLIDES = [
   {
     id: 2,
     title: 'Разработка <br> и продвижение <br> сайтов',
-    desc: 'desc',
-    label: 'label',
+    desc: 'Эффективные решения для бизнеса в интернете',
+    label: 'Посмотреть проекты',
     img: 'statics/banners/b1.png'
   },
   {
@@ -56,12 +56,23 @@ export default {
 
         props: {
           value: this.slide,
-          height: '667px',
           navigation: true,
+          height: '667px',
           animated: true,
           transitionPrev: 'slide-right',
-          transitionNext: 'slide-left'
+          transitionNext: 'slide-left',
+          keepAlive: true,
+          autoplay: 6000,
+          infinite: true,
+          swipeable: true
         },
+
+        directives: [
+          {
+            name: 'dynamic-height',
+            value: 10
+          }
+        ],
 
         on: {
           input: value => (this.slide = value)
@@ -80,98 +91,119 @@ export default {
           return h(
             'QCarouselSlide',
             {
-              class: 'flex column',
+              class: 'flex column items-center justify-center',
 
               style: {
-                backgroundPosition: '488px center', // need testing
+                backgroundPosition: 'right bottom', // need testing
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: 'contain'
+                backgroundSize: (this.$q.screen.lt.sm) ? 'cover' : 'contain'
               },
 
               props: {
                 name: id,
                 imgSrc: img
-              }
+              },
+
+              directives: [
+                {
+                  name: 'dynamic-bg-offset-x',
+                  value: 1264
+                }
+              ]
             },
             [
               h(
                 'div',
                 {
-                  class: 'flex column items-center justify-center'
+                  class: 'row wrap'
                 },
                 [
                   h(
                     'div',
                     {
-                      style: {
-                        width: '100%',
-                        maxWidth: '1140px'
-                      }
+                      class: 'col-xs-12 col-lg-5'
                     },
                     [
                       h(
                         'div',
                         {
-                          class: 'col-5'
+                          style: {
+                            fontSize: '50px',
+                            color: '#42515b',
+                            letterSpacing: '.1em',
+                            textAlign: (this.$q.screen.xs) ? 'center' : 'left'
+                          },
+
+                          domProps: {
+                            innerHTML: title.toUpperCase()
+                          },
+
+                          directives: [
+                            {
+                              name: 'dynamic-font-size',
+                              value: 10
+                            }
+                          ]
+                        }
+                      ),
+
+                      h(
+                        'div',
+                        {
+                          class: 'ubuntu-light-font q-mt-xl gt-xs',
+
+                          style: {
+                            color: '#42515b',
+                            textAlign: (this.$q.screen.xs) ? 'center' : 'left'
+                          }
+                        },
+                        desc
+                      ),
+
+                      h(
+                        'QBtn',
+                        {
+                          class: 'q-px-xl q-mt-xl',
+
+                          style: {
+                            letterSpacing: '.1em',
+                            minHeight: (this.$q.screen.gt.sm) ? '60px' : '40px'
+                          },
+
+                          props: {
+                            color: 'primary',
+                            rounded: true,
+                            unelevated: true,
+                            label
+                          },
+
+                          nativeOn: {
+                            mouseenter: (evt) => {
+                              evt.target.classList.add('btn--hovered')
+                            },
+
+                            mouseleave: (evt) => {
+                              evt.target.classList.remove('btn--hovered')
+                            }
+                          },
+
+                          directives: [
+                            {
+                              name: 'dynamic-font-size'
+                            }
+                          ]
                         },
                         [
                           h(
-                            'div',
+                            'QIcon',
                             {
-                              style: {
-                                fontSize: '50px',
-                                color: '#42515b',
-                                letterSpacing: '.1em'
-                              },
-
-                              domProps: {
-                                innerHTML: title.toUpperCase()
-                              }
-                            }
-                          ),
-
-                          h(
-                            'div',
-                            {
-                              class: 'ubuntu-light-font q-my-xl',
-
-                              style: {
-                                color: '#42515b'
-                              }
-                            },
-                            desc
-                          ),
-
-                          h(
-                            'QBtn',
-                            {
-                              class: 'q-px-xl q-mt-sm',
-
-                              style: {
-                                letterSpacing: '.1em',
-                                minHeight: '60px'
-                              },
+                              class: 'q-ml-sm',
 
                               props: {
-                                color: 'primary',
-                                rounded: true,
-                                unelevated: true,
-                                label
+                                name: 'arrow_right_alt',
+                                size: '20px'
                               }
-                            },
-                            [
-                              h(
-                                'QIcon',
-                                {
-                                  class: 'q-ml-sm',
-
-                                  props: {
-                                    name: 'arrow_right_alt',
-                                    size: '20px'
-                                  }
-                                }
-                              )
-                            ]
+                            }
                           )
                         ]
                       )
@@ -198,24 +230,21 @@ export default {
     &-inner
       justify-content start
 
-    .q-btn
-      padding 0
-      min-width 1em
-      min-height 1em
-      width 1em
-      height 1em
-      opacity 1
+    .q-carousel__navigation-icon
+      border-radius 50%
+      min-height 18px
+      height  18px
+      width 18px
+      min-width 18px
 
       .q-icon
+        color #83a1b2
         font-size 6px
-        border-radius 50%
 
-      &.q-carousel__navigation-icon--active
+      &--active
+        background-color $primary
+
         .q-icon
+          color white
           font-size 8px
-          border 3px solid $primary
-          border-radius 50%
-
-    .q-btn:not(.q-carousel__navigation-icon--active)
-      color #83a1b2
 </style>

@@ -1,6 +1,6 @@
 const SERVER_TIMEOUT = 1500
 
-const uploaderFactory = function () {
+const uploaderFactory = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

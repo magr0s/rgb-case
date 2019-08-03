@@ -54,7 +54,13 @@ export default {
             style: {
               maxWidth: '1400px',
               margin: 'auto'
-            }
+            },
+
+            directives: [
+              {
+                name: 'dynamic-padding'
+              }
+            ]
           },
           [
             h(
@@ -75,7 +81,13 @@ export default {
 
                     props: {
                       src: 'statics/logo.png'
-                    }
+                    },
+
+                    directives: [
+                      {
+                        name: 'dynamic-box-size'
+                      }
+                    ]
                   }
                 )
               ]
@@ -86,7 +98,7 @@ export default {
             h(
               'QTabs',
               {
-                class: 'q-mr-md',
+                class: 'q-mr-md gt-md',
 
                 style: {
                   marginTop: '6px',
@@ -107,7 +119,7 @@ export default {
                   return h(
                     'QRouteTab',
                     {
-                      class: 'tab--customize link--hovered',
+                      class: 'tab--customize',
 
                       style: {
                         paddingLeft: '14px',
@@ -117,6 +129,16 @@ export default {
                       props: {
                         label: this.$t(`route.${name}`),
                         to
+                      },
+
+                      nativeOn: {
+                        mouseenter: (evt) => {
+                          evt.target.classList.add('link--hovered')
+                        },
+
+                        mouseleave: (evt) => {
+                          evt.target.classList.remove('link--hovered')
+                        }
                       }
                     }
                   )
@@ -127,7 +149,7 @@ export default {
             h(
               'QBtn',
               {
-                class: 'q-mr-sm link--hovered',
+                class: 'q-mr-sm link--hovered gt-sm',
 
                 style: {
                   marginTop: '6px',
@@ -146,6 +168,8 @@ export default {
             h(
               'QBtn',
               {
+                class: 'gt-xs',
+
                 style: {
                   borderWidth: '2px',
                   marginTop: '6px',
@@ -167,12 +191,30 @@ export default {
 
                 nativeOn: {
                   mouseenter: (evt) => {
-                    evt.target.classList.add('hover-style')
+                    evt.target.classList.add('btn--hovered')
                   },
 
                   mouseleave: (evt) => {
-                    evt.target.classList.remove('hover-style')
+                    evt.target.classList.remove('btn--hovered')
                   }
+                }
+              }
+            ),
+
+            h(
+              'QBtn',
+              {
+                class: 'lt-lg q-ml-md',
+
+                style: {
+                  marginTop: '6px'
+                },
+
+                props: {
+                  icon: 'menu',
+                  flat: true,
+                  round: true,
+                  size: (this.$q.screen.gt.sm) ? 'lg' : 'md'
                 }
               }
             )
@@ -185,12 +227,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.hover-style
-  box-shadow 5px 9px 15px 0px rgba(0, 99, 217, 0.3)
-  background-color #17a4fd !important
-  color white !important
-  border-color #17a4fd !important
-
 .tab--customize >>>
   .q-tab__content
     min-width auto
