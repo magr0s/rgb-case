@@ -212,43 +212,12 @@ export default {
                 class: 'col-12 text-center'
               },
               [
-                // h(
-                //   'QBtn',
-                //   {
-                //     class: 'q-px-xl q-mt-xl',
-
-                //     style: {
-                //       fontSize: '16px',
-                //       minHeight: '60px'
-                //     },
-
-                //     props: {
-                //       color: 'primary',
-                //       unelevated: true,
-                //       label: this.$t('showMore'),
-                //       rounded: true
-                //     }
-                //   },
-                //   [
-                //     h(
-                //       'QIcon',
-                //       {
-                //         class: 'q-ml-md',
-
-                //         props: {
-                //           name: 'add'
-                //         }
-                //       }
-                //     )
-                //   ]
-                // )
                 h(
                   'QBtn',
                   {
                     class: 'q-px-xl q-mt-xl',
 
                     style: {
-                      letterSpacing: '.1em',
                       minHeight: (this.$q.screen.gt.sm) ? '60px' : '40px'
                     },
 

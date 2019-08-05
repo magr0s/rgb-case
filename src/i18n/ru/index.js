@@ -12,7 +12,8 @@ export default {
 
   btn: {
     consultation: 'Консультация',
-    showMore: 'Показать еще'
+    showMore: 'Показать еще',
+    send: 'Отправить'
   },
 
   dialog: {
@@ -31,5 +32,14 @@ export default {
 
   uploader: {
     failed: 'Ошибка загрузки файла'
+  },
+
+  error: {
+    required: 'Это поле необходимо заполнить',
+    agree: 'Для отправки формы требуется ваше согласие'
+  },
+
+  msg: {
+    success: 'Сообщение успешно отправлено!'
   }
 }
