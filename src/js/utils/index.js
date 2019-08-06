@@ -10,6 +10,14 @@ const uploaderFactory = () => {
   })
 }
 
+const prepareProductPrice = (price) => {
+  const arr = price.split('.')
+  const peni = `.${arr[1]}`
+
+  return '$' + arr[0] + peni.sup()
+}
+
 export {
-  uploaderFactory
+  uploaderFactory,
+  prepareProductPrice
 }

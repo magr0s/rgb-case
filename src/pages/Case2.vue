@@ -21,6 +21,7 @@ export default {
   methods: {
     buyHandle (item) {
       this.buyItem = item
+      this.buyDialog = true
     }
   },
 

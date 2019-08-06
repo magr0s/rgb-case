@@ -1,4 +1,6 @@
 <script>
+import { prepareProductPrice } from 'src/js/utils'
+
 const PRODUCTS = [
   {
     id: 1,
@@ -71,15 +73,6 @@ export default {
       return (this.filter.length)
         ? PRODUCTS.filter(item => (this.filter.includes(item.category)))
         : PRODUCTS
-    }
-  },
-
-  methods: {
-    preparePrice (price) {
-      const arr = price.split('.')
-      const peni = `.${arr[1]}`
-
-      return '$' + arr[0] + peni.sup()
     }
   },
 
@@ -158,7 +151,7 @@ export default {
                           class: 'product__price text-center',
 
                           domProps: {
-                            innerHTML: this.preparePrice(price)
+                            innerHTML: prepareProductPrice(price)
                           }
                         }
                       )
@@ -168,7 +161,7 @@ export default {
                   h(
                     'QBtn',
                     {
-                      class: 'absolute-center product__btn-buy',
+                      class: 'absolute-center product__btn-buy q-px-lg',
 
                       style: {
                         top: 'auto',
@@ -179,7 +172,8 @@ export default {
                         color: 'accent',
                         label: this.$t('btn.buy'),
                         size: 'sm',
-                        unelevated: true
+                        unelevated: true,
+                        noCaps: true
                       },
 
                       on: {
