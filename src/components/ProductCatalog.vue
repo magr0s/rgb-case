@@ -83,7 +83,7 @@ export default {
         class: 'row q-col-gutter-lg'
       },
       [
-        this.products.map((item) => {
+        ...this.products.map((item) => {
           const {
             name,
             img,
@@ -93,7 +93,7 @@ export default {
           return h(
             'div',
             {
-              class: 'col-3'
+              class: 'col-xs-12 col-sm-6 col-md-4 col-lg-3'
             },
             [
               h(
@@ -105,6 +105,14 @@ export default {
                     bordered: true,
                     square: true,
                     flat: true
+                  },
+
+                  on: {
+                    click: () => {
+                      if (this.$q.screen.lt.md) {
+                        this.$emit('buy', item)
+                      }
+                    }
                   },
 
                   nativeOn: {
@@ -136,6 +144,11 @@ export default {
 
                   h(
                     'QCardSection',
+                    {
+                      style: {
+                        paddingBottom: '34px'
+                      }
+                    },
                     [
                       h(
                         'div',
@@ -165,13 +178,14 @@ export default {
 
                       style: {
                         top: 'auto',
-                        bottom: '-25px'
+                        bottom: '-34px',
+                        height: '34px'
                       },
 
                       props: {
                         color: 'accent',
                         label: this.$t('btn.buy'),
-                        size: 'sm',
+                        dense: true,
                         unelevated: true,
                         noCaps: true
                       },
@@ -185,7 +199,31 @@ export default {
               )
             ]
           )
-        })
+        }),
+
+        h(
+          'div',
+          {
+            class: 'col-12 text-center q-mt-xl'
+          },
+          [
+            h(
+              'span',
+              {
+                class: 'text-accent'
+              },
+              '* '
+            ),
+
+            h(
+              'span',
+              {
+                class: 'text-grey-5'
+              },
+              this.$t('alert.catalog')
+            )
+          ]
+        )
       ]
     )
   }

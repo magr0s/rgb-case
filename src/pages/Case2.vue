@@ -29,7 +29,11 @@ export default {
     return h(
       'QPage',
       {
-        class: 'flex justify-center items-center column',
+        class: 'flex items-center column',
+
+        style: {
+          paddingBottom: '125px'
+        },
 
         props: {
           padding: true

@@ -2,10 +2,7 @@
 import { prepareProductPrice } from 'src/js/utils'
 
 const MEMORY = [
-  { label: '32Gb', value: '32' },
-  { label: '64Gb', value: '64' },
-  { label: '128Gb', value: '128' },
-  { label: '256Gb', value: '256' }
+  '32Gb', '64Gb', '128Gb', '256Gb'
 ]
 
 const COLOR = [
@@ -32,9 +29,10 @@ export default {
   data () {
     return {
       form: {
-        memory: 64,
+        memory: '64Gb',
         color: 'white',
-        count: 1
+        count: 1,
+        ...this.item
       }
     }
   },
@@ -45,6 +43,24 @@ export default {
         label: this.$t(`label.${item}`),
         value: item
       }))
+    }
+  },
+
+  methods: {
+    buyHandle () {
+      const {
+        name,
+        memory,
+        color,
+        count
+      } = this.form
+
+      this.$emit('input', false)
+
+      this.$q.dialog({
+        title: 'Order Data',
+        message: `Client buy ${name}. Color: ${this.$t(`label.${color}`)}. Memory: ${memory}. Count: ${count}`
+      })
     }
   },
 
@@ -181,8 +197,6 @@ export default {
                                           outlined: true,
                                           options: MEMORY,
                                           optionsDense: true,
-                                          optionLabel: 'label',
-                                          optionValue: 'value',
                                           mapOptions: true
                                         },
 
@@ -317,9 +331,7 @@ export default {
                                         },
 
                                         on: {
-                                          click: () => {
-
-                                          }
+                                          click: this.buyHandle
                                         },
 
                                         directives: [
