@@ -30,6 +30,14 @@ export default {
     agree: 'Я согласен на обработку <a href="/">персональных данных</a>'
   },
 
+  catalog: {
+    phone: 'Смартфоны',
+    notebook: 'Планшеты/Ноутбуки',
+    watch: 'Часы',
+    accessories: 'Аксессуары',
+    other: 'Другое'
+  },
+
   uploader: {
     failed: 'Ошибка загрузки файла'
   },

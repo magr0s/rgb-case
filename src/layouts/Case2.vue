@@ -1,22 +1,14 @@
 <script>
-import { Case1Header } from 'components/headers'
-
 export default {
-  components: {
-    Case1Header
-  },
-
   render (h) {
     return h(
       'QLayout',
       {
         attrs: {
-          id: 'case1'
+          id: 'case2'
         }
       },
       [
-        h('Case1Header'),
-
         h(
           'QPageContainer',
           [

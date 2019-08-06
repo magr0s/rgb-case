@@ -5,6 +5,10 @@ const NAVIGATOR = [
   {
     name: 'case',
     to: '/case1'
+  },
+  {
+    name: 'case',
+    to: '/case2'
   }
 ]
 
