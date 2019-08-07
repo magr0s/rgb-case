@@ -1,5 +1,8 @@
 <script>
-import { ConsultationDialog } from 'components/dialogs'
+import {
+  ConsultationDialog,
+  MenuDialog
+} from 'components/dialogs'
 
 const NAVIGATOR = [
   { name: 'service', to: '/case1/service' },
@@ -13,12 +16,14 @@ const PHONE = '+7 342 225-00-75'
 
 export default {
   components: {
-    ConsultationDialog
+    ConsultationDialog,
+    MenuDialog
   },
 
   data () {
     return {
-      dialog: false
+      dialog: false,
+      menuDialog: false
     }
   },
 
@@ -33,6 +38,20 @@ export default {
         }
       },
       [
+        h(
+          'MenuDialog',
+          {
+            props: {
+              value: this.menuDialog,
+              navigator: NAVIGATOR
+            },
+
+            on: {
+              input: value => (this.menuDialog = value)
+            }
+          }
+        ),
+
         h(
           'ConsultationDialog',
           {
@@ -215,6 +234,10 @@ export default {
                   flat: true,
                   round: true,
                   size: (this.$q.screen.gt.sm) ? 'lg' : 'md'
+                },
+
+                on: {
+                  click: () => (this.menuDialog = true)
                 }
               }
             )

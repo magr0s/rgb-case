@@ -55,12 +55,14 @@ export default {
         count
       } = this.form
 
-      this.$emit('input', false)
+      const message = `Client buy ${name}. Color: ${this.$t(`label.${color}`)}. Memory: ${memory}. Count: ${count}`
 
       this.$q.dialog({
         title: 'Order Data',
-        message: `Client buy ${name}. Color: ${this.$t(`label.${color}`)}. Memory: ${memory}. Count: ${count}`
+        message
       })
+
+      this.$emit('input', false)
     }
   },
 
@@ -125,7 +127,8 @@ export default {
 
                     directives: [
                       {
-                        name: 'close-popup'
+                        name: 'close-popup',
+                        value: true
                       }
                     ]
                   }

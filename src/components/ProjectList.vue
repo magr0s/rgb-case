@@ -140,7 +140,7 @@ export default {
                               directives: [
                                 {
                                   name: 'dynamic-font-size',
-                                  value: 10
+                                  value: 5
                                 },
                                 {
                                   name: 'dynamic-padding',
@@ -162,7 +162,8 @@ export default {
 
                               directives: [
                                 {
-                                  name: 'dynamic-font-size'
+                                  name: 'dynamic-font-size',
+                                  value: 5
                                 },
                                 {
                                   name: 'dynamic-padding',

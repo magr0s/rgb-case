@@ -10,9 +10,7 @@ export default {
     return h(
       'QLayout',
       {
-        attrs: {
-          id: 'case1'
-        }
+        class: 'acrobat-bold-font'
       },
       [
         h('Case1Header'),

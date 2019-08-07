@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["2d0b6119"],{"1c1b":function(n,e,t){"use strict";t.r(e);var r,u,a={render:function(n){return n("QLayout",{attrs:{id:"case2"}},[n("QPageContainer",[n("RouterView")])])}},o=a,c=t("2877"),i=Object(c["a"])(o,r,u,!1,null,null,null);e["default"]=i.exports}}]);

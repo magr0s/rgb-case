@@ -61,9 +61,8 @@ export default {
           animated: true,
           transitionPrev: 'slide-right',
           transitionNext: 'slide-left',
-          keepAlive: true,
-          autoplay: 6000,
-          infinite: true,
+          // autoplay: 6000,
+          // infinite: true,
           swipeable: true
         },
 
@@ -121,7 +120,11 @@ export default {
                   h(
                     'div',
                     {
-                      class: 'col-xs-12 col-lg-5'
+                      class: 'col-xs-12 col-lg-5',
+
+                      style: {
+                        textAlign: (this.$q.screen.xs) ? 'center' : 'left'
+                      }
                     },
                     [
                       h(
@@ -129,9 +132,7 @@ export default {
                         {
                           style: {
                             fontSize: '50px',
-                            color: '#42515b',
-                            letterSpacing: '.1em',
-                            textAlign: (this.$q.screen.xs) ? 'center' : 'left'
+                            color: '#42515b'
                           },
 
                           domProps: {
@@ -153,8 +154,7 @@ export default {
                           class: 'ubuntu-light-font q-mt-xl gt-xs',
 
                           style: {
-                            color: '#42515b',
-                            textAlign: (this.$q.screen.xs) ? 'center' : 'left'
+                            color: '#42515b'
                           }
                         },
                         desc
@@ -231,7 +231,7 @@ export default {
       justify-content start
 
     .q-carousel__navigation-icon
-      border-radius 50%
+      border-radius 100%
       min-height 18px
       height  18px
       width 18px
@@ -244,7 +244,19 @@ export default {
       &--active
         background-color $primary
 
+        .q-btn__content
+          &:after
+            content ''
+            position absolute
+            width 8px
+            height 8px
+            background white
+            top 50%
+            margin-top -4px
+            left 50%
+            margin-left -4px
+            border-radius 100%
+
         .q-icon
-          color white
-          font-size 8px
+          display none
 </style>

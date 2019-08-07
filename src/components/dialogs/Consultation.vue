@@ -93,6 +93,8 @@ export default {
         h(
           'QCard',
           {
+            class: 'acrobat-bold-font',
+
             style: {
               width: '1280px',
               maxWidth: '90vw',
@@ -167,7 +169,7 @@ export default {
                         directives: [
                           {
                             name: 'dynamic-padding',
-                            value: 25
+                            value: 20
                           }
                         ]
                       },
@@ -175,7 +177,7 @@ export default {
                         h(
                           'div',
                           {
-                            class: 'col-xs-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-3 col-xl-7 offset-xl-4'
+                            class: 'col-xs-12 col-sm-10 offset-sm-1 col-md-8 offset-md-3 col-xl-7 offset-xl-4'
                           },
                           [
                             h(

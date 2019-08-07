@@ -34,8 +34,9 @@ export default {
     count: 'Количество',
     white: 'Белый',
     black: 'Черный',
-    'grey': 'Серый',
-    'detail': 'Посмотреть в магазине'
+    grey: 'Серый',
+    detail: 'Посмотреть в магазине',
+    filter: 'Фильтр товаров'
   },
 
   catalog: {

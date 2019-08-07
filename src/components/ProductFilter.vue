@@ -65,6 +65,14 @@ export default {
             class: 'flex items-center lt-md'
           },
           [
+            h(
+              'div',
+              {
+                class: 'text-subtitle1 font-weight-medium'
+              },
+              this.$t('label.filter')
+            ),
+
             h('QSpace'),
 
             h(
